@@ -23,3 +23,15 @@ Deployment in progress
 It may be several minutes before the deployment completes and the instance launches. 
 ![image](https://github.com/user-attachments/assets/a17b4585-f231-4cdd-b486-f0a259d6487f)
 
+Once the vMX is online, a route table needs to be created including the Auto VPN subnets so that the Azure resources know how to access the Meraki subnets over Auto VPN.
+
+Additional Azure Route Table Configuration
+To create a route table, click on "New" and then "Route Table."
+Inside the vnet there should be two subnets as defined below:
+![image](https://github.com/user-attachments/assets/121a0760-f141-4a02-87c9-27dfbceb2c99)
+Inside the route table the destination cidr should be the cidr of Cisco Meraki Hub range which needs to communicate to Azure and Next hop address should be VM IP of Cisco Meraki VM deployed in earlier steps
+![image](https://github.com/user-attachments/assets/ff118354-5a91-4af1-ae35-d520c1e59605)
+Finally, associate the Route Table with the subnet where the resources are deployed (NOT the SD-WAN subnet where the vMX is deployed). Click on "Subnets" and then "Associate.  Choose the virtual network and then choose the production subnet(s) where your applications are deployed and click "OK."
+![image](https://github.com/user-attachments/assets/07706907-5098-4f64-bbb8-e0cd3ec98519)
+Once the subnet has been associated, enable site-to-site VPN on dashboard.
+On the site-to-site VPN page, add each subnet in your resource group that should be accessible to remote Auto VPN peers to the list of "Local Network(s)." For more information on configuring Auto VPN, please refer to the site-to-site VPN settings documentation.
