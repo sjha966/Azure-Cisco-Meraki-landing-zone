@@ -8,10 +8,9 @@ Cisco Meraki's virtual MX (vMX) is a virtual instance of a Meraki security & SD-
 ![image](https://github.com/user-attachments/assets/a8e739b5-a1c4-4172-9a59-dd593bddd376)
 Azure 
 ![image](https://github.com/user-attachments/assets/5515655f-d789-4af7-a3f4-a2a9f189b8a8)
+
 You must have the following before you begin:
-
 An Azure virtual network (vNET, also known as a VPC) where you will deploy the vMX.  This vNET and its corresponding resource group can be the same one as the resources you plan to access across the Meraki VPN or a different one.  Refer to this Azure document for creating these resources. 
-
 You MUST have an "SD-WAN" subnet inside the vNET where the vMX will be deployed which is separate from the subnet(s) where the resources you plan to access through the VPN are hosted.  Ex. If your apps and resources are located in the "production" subnet, you will deploy a second subnet in the same vNET called "SD-WAN" in which the vMX will be deployed.  DO NOT deploy the vMX inside the production subnet alongside the other resources as this can result in a routing loop and packet loss within the Azure environment.
 Configure virtual networks
 Virtual network: Choose an existing virtual network from the list.
